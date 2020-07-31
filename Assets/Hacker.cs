@@ -55,21 +55,18 @@ public class Hacker : MonoBehaviour
         switch (input)
         {
             case "1":
-                int index = Random.Range(0, levelOnePasswords.Length);
                 level = 1;
-                password = levelOnePasswords[index];
+                password = levelOnePasswords[Random.Range(0, levelOnePasswords.Length)];
                 StartGame();
                 break;
             case "2":
-                int index2 = Random.Range(0, levelTwoPasswords.Length);
                 level = 2;
-                password = levelTwoPasswords[index2];
+                password = levelTwoPasswords[Random.Range(0, levelTwoPasswords.Length)];
                 StartGame();
                 break;
             case "3":
-                int index3 = Random.Range(0, levelThreePasswords.Length);
                 level = 3;
-                password = levelThreePasswords[index3];
+                password = levelThreePasswords[Random.Range(0, levelThreePasswords.Length)];
                 StartGame();
                 break;
             case "1337":
