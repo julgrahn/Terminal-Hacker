@@ -90,11 +90,23 @@ public class Hacker : MonoBehaviour
     {
         if(input == password)
         {
-            Terminal.WriteLine("Well done!");
+            DisplayWinScreen();
         }
         else
         {
             Terminal.WriteLine("Wrong, try again");
         }
+    }
+
+    void DisplayWinScreen()
+    {
+        currentScreen = Screen.Win;
+        Terminal.ClearScreen();
+        ShowLevelReward();
+    }
+
+    void ShowLevelReward()
+    {
+        Terminal.WriteLine("Well done!");
     }
 }
