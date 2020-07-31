@@ -107,6 +107,17 @@ public class Hacker : MonoBehaviour
 
     void ShowLevelReward()
     {
-        Terminal.WriteLine("Well done!");
+        switch(level)
+        {
+            case 1:
+                Terminal.WriteLine("Welcome to the library!");
+                break;
+            case 2:
+                Terminal.WriteLine("Welcome to the police office!");
+                break;
+            case 3:
+                Terminal.WriteLine("Welcome to NASA. Time to go to space.");
+                break;
+        }
     }
 }
