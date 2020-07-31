@@ -111,12 +111,36 @@ public class Hacker : MonoBehaviour
         {
             case 1:
                 Terminal.WriteLine("Welcome to the library!");
+                Terminal.WriteLine(@"
+    ________
+   /       //
+  /       //
+ /______ //
+(_______(/
+
+");
                 break;
             case 2:
                 Terminal.WriteLine("Welcome to the police office!");
+                Terminal.WriteLine(@"
+             __@@@___
+       _____//_______\______
+      |    POLICE           |
+      |__ _____________ ____|
+         O             O
+
+");
                 break;
             case 3:
-                Terminal.WriteLine("Welcome to NASA. Time to go to space.");
+                Terminal.WriteLine("Welcome to NASA. Time to go to...");
+                Terminal.WriteLine(@"
+  ___ _ __   __ _  ___ ___ 
+ / __| '_ \ / _` |/ __/ _ \
+ \__ \ |_) | (_| | (_|  __/
+ |___/ .__/ \__,_|\___\___|
+     |_|                   
+
+");
                 break;
         }
     }
