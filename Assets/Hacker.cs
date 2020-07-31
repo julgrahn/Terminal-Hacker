@@ -1,10 +1,15 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 public class Hacker : MonoBehaviour
 {
-    string[] levelOnePasswords = { "books", "aisle", "self", "password", "font", "borrow", "shelves" };
+    //Game data
+    const string menuHint = "You can type menu at any time!";
+    string[] levelOnePasswords = { "books", "aisle", "shelf", "password", "font", "borrow", "shelves" };
     string[] levelTwoPasswords = { "handcuffs", "officer", "guns", "uniform", "station" };
     string[] levelThreePasswords = { "space", "astronaut", "spaceship", "rocket" };
+    int lives = 3;
+
 
     //Game State
     int level;
@@ -57,32 +62,34 @@ public class Hacker : MonoBehaviour
             case "1":
                 level = 1;
                 password = levelOnePasswords[Random.Range(0, levelOnePasswords.Length)];
-                StartGame();
+                AskForPassword();
                 break;
             case "2":
                 level = 2;
                 password = levelTwoPasswords[Random.Range(0, levelTwoPasswords.Length)];
-                StartGame();
+                AskForPassword();
                 break;
             case "3":
                 level = 3;
                 password = levelThreePasswords[Random.Range(0, levelThreePasswords.Length)];
-                StartGame();
+                AskForPassword();
                 break;
             case "1337":
                 Terminal.WriteLine("Holy moly you're a 1337 hacker, pls dont h4ck m3");
                 break;
             default:
                 Terminal.WriteLine("Please choose a valid level");
+                Terminal.WriteLine(menuHint);
                 break;
         }
     }
 
-    void StartGame()
+    void AskForPassword()
     {
         currentScreen = Screen.Password;
         Terminal.ClearScreen();
-        Terminal.WriteLine("Enter the password: ");
+        Terminal.WriteLine("Enter the password, hint: " + password.Anagram());
+        Terminal.WriteLine(menuHint);
 
     }
 
@@ -94,7 +101,13 @@ public class Hacker : MonoBehaviour
         }
         else
         {
-            Terminal.WriteLine("Wrong, try again");
+            lives--;
+            Terminal.WriteLine("Wrong! You have " + lives + " lives left.");
+            if(lives == 0)
+            {
+                lives = 3;
+                AskForPassword();
+            }
         }
     }
 
@@ -103,6 +116,7 @@ public class Hacker : MonoBehaviour
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
+        Terminal.WriteLine(menuHint);
     }
 
     void ShowLevelReward()
@@ -141,6 +155,9 @@ public class Hacker : MonoBehaviour
      |_|                   
 
 ");
+                break;
+            default:
+                Debug.LogError("Invalid level!");
                 break;
         }
     }
